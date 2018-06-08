@@ -49,12 +49,12 @@ install:
   - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
   - rustup install nightly-2018-05-31
   - cargo +nightly-2018-05-31 install clippy --force
-  - cargo install rustfmt-nightly --force
+  - cargo +nightly-2018-05-31 install rustfmt-nightly --force
 
   - rustc -Vv
   - cargo -V
   - cargo +nightly-2018-05-31 clippy -V
-  - cargo fmt --version
+  - cargo +nightly-2018-05-31 fmt --version
 
 build: false
 shallow_clone: true
@@ -62,7 +62,7 @@ shallow_clone: true
 test_script:
   - cargo test --no-default-features
   - cargo +nightly-2018-05-31 clippy --no-default-features --verbose
-  - cargo fmt -- --check
+  - cargo +nightly-2018-05-31 fmt -- --check
 
 branches:
   only:

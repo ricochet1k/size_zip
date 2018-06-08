@@ -16,12 +16,12 @@ matrix:
 before_script:
   - rustup install nightly-2018-05-31
   - cargo +nightly-2018-05-31 install clippy --force
-  - cargo install rustfmt-nightly --force
+  - cargo +nightly-2018-05-31 install rustfmt-nightly --force
 
 script:
   - cargo test
   - cargo +nightly-2018-05-31 clippy
-  - cargo fmt -- --check
+  - cargo +nightly-2018-05-31 fmt -- --check
 
 git:
   depth: 1
