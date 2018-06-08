@@ -64,6 +64,7 @@ where
 {
     type Item = (Option<WithRange<A::Item, S>>, Option<WithRange<B::Item, S>>);
 
+    #[cfg_attr(feature = "cargo-clippy", allow(eq_op))]
     fn next(&mut self) -> Option<Self::Item> {
         let mut saved = Neither;
         std::mem::swap(&mut saved, &mut self.saved);
