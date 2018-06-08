@@ -1,0 +1,31 @@
+language: rust
+
+cache: cargo
+
+rust:
+  - stable
+  - beta
+  - nightly-2018-05-30
+  - nightly
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - rust: nightly
+
+before_script:
+  - cargo install clippy --force
+  - cargo install rustfmt-nightly --force
+
+script:
+  - cargo test
+  - cargo +nightly clippy
+  - cargo fmt -- --check
+
+git:
+  depth: 1
+
+notifications:
+  email:
+    on_success: never
+
