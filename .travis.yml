@@ -5,7 +5,7 @@ cache: cargo
 rust:
   - stable
   - beta
-  - nightly-2018-05-30
+  - nightly-2018-05-31
   - nightly
 
 matrix:
@@ -14,12 +14,13 @@ matrix:
     - rust: nightly
 
 before_script:
-  - cargo install clippy --force
+  - rustup install nightly-2018-05-31
+  - cargo +nightly-2018-05-31 install clippy --force
   - cargo install rustfmt-nightly --force
 
 script:
   - cargo test
-  - cargo +nightly clippy
+  - cargo +nightly-2018-05-31 clippy
   - cargo fmt -- --check
 
 git:
